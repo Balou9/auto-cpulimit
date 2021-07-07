@@ -1,8 +1,9 @@
-Package: auto-cpulimit
-Version:
+Source: auto-cpulimit
 Section: unknown
 Priority: optional
-Architecture: all
 Maintainer: Balou9 <eto.owosekun@gmail.com>
 Standards-Version: 4.5.1
-Description: Wrapper around cpulimit to limit cpu usage for multiple processes 
+
+Package: auto-cpulimit
+Architecture: all
+Description: Wrapper around cpulimit to limit cpu usage for multiple processes
