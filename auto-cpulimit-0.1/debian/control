@@ -3,6 +3,7 @@ Section: unknown
 Priority: optional
 Maintainer: Balou9 <eto.owosekun@gmail.com>
 Standards-Version: 4.5.1
+Build-Depends: debhelper-compat (= 12)
 
 Package: auto-cpulimit
 Architecture: all
