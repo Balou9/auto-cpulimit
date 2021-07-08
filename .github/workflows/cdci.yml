@@ -16,4 +16,4 @@ jobs:
       - name: build debian package
         run: |
           cd auto-cpulimit-0.1/
-          debuild -us -uc --no-tgz-check
+          debuild --no-tgz-check -us -uc

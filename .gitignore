@@ -1,4 +1,6 @@
-*.ex
-*.EX
-README.Debian
-README.source
+*.deb
+*.build
+*.buildinfo
+*.changes
+*.dsc
+*.tar.xz

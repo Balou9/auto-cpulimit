@@ -1,8 +1,0 @@
-Package: auto-cpulimit
-Version: 0.1-1
-Architecture: all
-Maintainer: Balou9 <eto.owosekun@gmail.com>
-Installed-Size: 20
-Section: unknown
-Priority: optional
-Description: Wrapper around cpulimit to limit cpu usage for multiple processes
