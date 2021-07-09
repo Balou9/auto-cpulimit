@@ -31,6 +31,8 @@ jobs:
           cp acl.sh ${{ env.PACKAGE_NAME }}/usr/local/bin
           cp control ${{ env.PACKAGE_NAME }}/DEBIAN
 
+          ls --recursive
+
       - name: Build the deb package
         run: |
           dpkg-deb --build --root-owner-group ${{ env.PACKAGE_NAME }}
@@ -46,4 +48,4 @@ jobs:
       - name: install the deb package
         run: |
           package="${{ needs.build.outputs.pkg_name }}"
-          sudo dpkg -i "$package"
+          sudo dpkg -i "$package".deb
