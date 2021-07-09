@@ -1,0 +1,53 @@
+name: build-test-deb-package
+
+on: push
+
+env:
+  DPKG_DEP_NAME: auto-cpulimit
+  VERSION: "0.1"
+  REVISION: "1"
+  ARCHITECTURE: "arm64"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      pkg_name: ${{ steps.configure_environment.outputs.package_name }}
+    steps:
+      - name: clone the repo
+        uses: actions/checkout@v2.3.4
+
+      - name: install the build dependencies
+        run: |
+          sudo apt-get install dpkg-deb
+
+      - name: configure the environment
+        id: configure_environment
+        run: |
+          echo "PACKAGE_NAME=${{ env.DPKG_DEP_NAME }}_${{ env.VERSION }}-${{ env.REVISION }}_${{ env.ARCHITECTURE }}" >> $GITHUB_ENV
+          echo "::set-output name=package_name::${{ env.DPKG_DEP_NAME }}_${{ env.VERSION }}-${{ env.REVISION }}_${{ env.ARCHITECTURE }}"
+
+      - name: create the folder structure
+        run: |
+          mkdir -p ${{ env.PACKAGE_NAME }}/usr/local/bin
+          mkdir -p ${{ env.PACKAGE_NAME }}/DEBIAN
+
+          cp acl.sh ${{ env.PACKAGE_NAME }}/usr/local/bin
+          cp control ${{ env.PACKAGE_NAME }}/DEBIAN
+
+      - name: Build the deb package
+        run: |
+          dpkg-deb --build --root-owner-group ${{ env.PACKAGE_NAME }}
+
+  test:
+    runs-on: ubuntu-latest
+    needs:
+      - build
+    steps:
+      - name: clone the repo
+        uses: actions/checkout@v2.3.4
+
+      - name: install the deb package
+        run: |
+          package="${{ needs.build.outputs.package_name }}"
+          sudo dpkg -i "$package"
