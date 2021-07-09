@@ -21,7 +21,7 @@ jobs:
         id: configure_environment
         run: |
           echo "PACKAGE_NAME=${{ env.DPKG_DEP_NAME }}_${{ env.VERSION }}-${{ env.REVISION }}_${{ env.ARCHITECTURE }}" >> $GITHUB_ENV
-          echo "::set-output name=package_name::${{ env.PACKAGE_NAME }}"
+          echo "::set-output name=package_name::${{ env.DPKG_DEP_NAME }}_${{ env.VERSION }}-${{ env.REVISION }}_${{ env.ARCHITECTURE }}"
 
       - name: create the folder structure
         run: |
