@@ -45,5 +45,5 @@ jobs:
 
       - name: install the deb package
         run: |
-          package="${{ needs.build.outputs.package_name }}"
+          package="${{ needs.build.outputs.pkg_name }}"
           sudo dpkg -i "$package"
