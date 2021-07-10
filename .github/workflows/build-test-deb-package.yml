@@ -6,7 +6,7 @@ env:
   DPKG_DEP_NAME: auto-cpulimit
   VERSION: "0.1"
   REVISION: "1"
-  ARCHITECTURE: "arm64"
+  ARCHITECTURE: arm64
 
 jobs:
   build:
@@ -34,6 +34,7 @@ jobs:
       - name: Build the deb package
         run: |
           dpkg-deb --build --root-owner-group ${{ env.PACKAGE_NAME }}
+          ls
 
   test:
     runs-on: ubuntu-latest
