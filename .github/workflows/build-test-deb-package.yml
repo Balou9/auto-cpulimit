@@ -6,7 +6,7 @@ env:
   DPKG_DEP_NAME: auto-cpulimit
   VERSION: "0.1"
   REVISION: "1"
-  ARCHITECTURE: arm64
+  ARCHITECTURE: amd64
 
 jobs:
   build-test:
