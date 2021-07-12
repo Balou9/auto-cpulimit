@@ -28,7 +28,7 @@ jobs:
           cp acl.sh ${{ env.PACKAGE_NAME }}/usr/local/bin
           cp control ${{ env.PACKAGE_NAME }}/DEBIAN
 
-      - name: Build the deb package
+      - name: build the deb package
         run: |
           dpkg-deb --build --root-owner-group ${{ env.PACKAGE_NAME }}
           ls
@@ -37,8 +37,9 @@ jobs:
         run: |
           sudo apt -f install
           sudo dpkg -i ${{ env.PACKAGE_NAME }}.deb
-
-      - name: run auto-cpulimit
-        run: |
           dpkg -l
-          sudo auto-cpulimit --limit=20 -e R
+
+
+      - name: run a package command
+        run: |
+          sudo auto-cpulimit --help
