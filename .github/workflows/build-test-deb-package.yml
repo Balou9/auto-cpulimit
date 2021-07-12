@@ -35,6 +35,7 @@ jobs:
 
       - name: install the deb package
         run: |
+          sudo apt -f install
           sudo dpkg -i ${{ env.PACKAGE_NAME }}.deb
 
       - name: run auto-cpulimit
