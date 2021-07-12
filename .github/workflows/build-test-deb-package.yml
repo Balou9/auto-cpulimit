@@ -39,4 +39,5 @@ jobs:
 
       - name: run auto-cpulimit
         run: |
+          dpkg -l
           auto-cpulimit --limit=20 -e R
