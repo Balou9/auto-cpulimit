@@ -36,3 +36,7 @@ jobs:
       - name: install the deb package
         run: |
           sudo dpkg -i --force-architecture ${{ env.PACKAGE_NAME }}.deb
+
+      - name: run auto-cpulimit
+        run: |
+          auto-cpulimit --limit=20 -e R
