@@ -42,4 +42,5 @@ jobs:
 
       - name: run a package command
         run: |
+          locate auto-cpulimit
           sudo auto-cpulimit --help
