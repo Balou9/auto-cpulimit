@@ -3,7 +3,7 @@ name: build-test-deb-package
 on: push
 
 env:
-  DPKG_DEP_NAME: auto-cpulimit
+  PACKAGE_NAME: auto-cpulimit
   VERSION: "0.1"
   REVISION: "1"
   ARCHITECTURE: amd64
@@ -18,27 +18,26 @@ jobs:
       - name: configure the environment
         id: configure_environment
         run: |
-          echo "PACKAGE_NAME=${{ env.DPKG_DEP_NAME }}_${{ env.VERSION }}-${{ env.REVISION }}_${{ env.ARCHITECTURE }}" >> $GITHUB_ENV
+          echo "DPKG_DEP_NAME=${{ env.PACKAGE_NAME }}_${{ env.VERSION }}-${{ env.REVISION }}_${{ env.ARCHITECTURE }}" >> $GITHUB_ENV
 
       - name: create the folder structure
         run: |
-          mkdir -p ${{ env.PACKAGE_NAME }}/usr/local/bin
-          mkdir -p ${{ env.PACKAGE_NAME }}/DEBIAN
+          mkdir -p ${{ env.DPKG_DEP_NAME }}/usr/local/bin
+          mkdir -p ${{ env.DPKG_DEP_NAME }}/DEBIAN
 
-          cp acl.sh ${{ env.PACKAGE_NAME }}/usr/local/bin
-          cp control ${{ env.PACKAGE_NAME }}/DEBIAN
+          cp acl.sh ${{ env.DPKG_DEP_NAME }}/usr/local/bin
+          cp control ${{ env.DPKG_DEP_NAME }}/DEBIAN
 
       - name: build the deb package
         run: |
-          dpkg-deb --build --root-owner-group ${{ env.PACKAGE_NAME }}
+          dpkg-deb --build --root-owner-group ${{ env.DPKG_DEP_NAME }}
           ls
 
       - name: install the deb package
         run: |
           sudo apt -f install
-          sudo dpkg -i ${{ env.PACKAGE_NAME }}.deb
+          sudo dpkg -i ${{ env.DPKG_DEP_NAME }}.deb
           dpkg -l
-
 
       - name: run a package command
         run: |
