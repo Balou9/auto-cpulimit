@@ -30,7 +30,7 @@ jobs:
 
       - name: build the deb package
         run: |
-          ls
+          ls -R ${{ env.DPKG_DEP_NAME }}
           dpkg-deb --build --root-owner-group ${{ env.DPKG_DEP_NAME }}
 
       - name: install the deb package
