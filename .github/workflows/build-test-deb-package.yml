@@ -23,10 +23,10 @@ jobs:
       - name: create the folder structure
         run: |
           mkdir -p ${{ env.DPKG_DEP_NAME }}/usr/local/bin
-          mkdir -p ${{ env.DPKG_DEP_NAME }}/debian
+          mkdir -p ${{ env.DPKG_DEP_NAME }}/DEBIAN
 
           cp acl.sh ${{ env.DPKG_DEP_NAME }}/usr/local/bin
-          cp -r debian ${{ env.DPKG_DEP_NAME }}/debian
+          cp -r DEBIAN ${{ env.DPKG_DEP_NAME }}/DEBIAN
 
       - name: build the deb package
         run: |
