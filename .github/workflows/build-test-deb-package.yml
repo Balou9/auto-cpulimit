@@ -24,8 +24,6 @@ jobs:
         run: |
           mkdir -p ${{ env.DPKG_DEP_NAME }}/usr/local/bin
 
-          ls
-
           cp acl.sh ${{ env.DPKG_DEP_NAME }}/usr/local/bin
           cp -r DEBIAN ${{ env.DPKG_DEP_NAME }}
 
@@ -42,4 +40,4 @@ jobs:
 
       - name: run a package command
         run: |
-          sudo auto-cpulimit --help
+          sudo ${{ env.DPKG_DEP_NAME }} --help
