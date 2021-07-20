@@ -40,4 +40,4 @@ jobs:
 
       - name: run a package command
         run: |
-          sudo ${{ env.DPKG_DEP_NAME }} --help
+          sudo ${{ env.PACKAGE_NAME }} --help
