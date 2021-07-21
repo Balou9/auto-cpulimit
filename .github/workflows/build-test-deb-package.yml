@@ -35,7 +35,7 @@ jobs:
       - name: install the deb package
         run: |
           sudo dpkg -i ${{ env.DPKG_DEP_NAME }}.deb
-          sudo apt -f install
+          sudo apt-get install -f
           dpkg -l
 
       - name: run a package command
