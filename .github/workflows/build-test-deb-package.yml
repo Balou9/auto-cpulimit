@@ -23,7 +23,6 @@ jobs:
       - name: create the folder structure
         run: |
           mkdir -p ${{ env.DPKG_DEP_NAME }}/usr/local/bin
-
           cp acl.sh ${{ env.DPKG_DEP_NAME }}/usr/local/bin
           cp -r DEBIAN ${{ env.DPKG_DEP_NAME }}
 
@@ -35,6 +34,7 @@ jobs:
       - name: install the deb package
         run: |
           sudo dpkg -i ${{ env.DPKG_DEP_NAME }}.deb
+          sudo apt-get upgrade
           sudo apt-get install -f
           dpkg -l
 
