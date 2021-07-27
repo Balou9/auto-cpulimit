@@ -6,7 +6,7 @@ env:
   PACKAGE_NAME: auto-cpulimit
   VERSION: "0.1"
   REVISION: "1"
-  ARCHITECTURE: amd64
+  ARCHITECTURE: all
 
 jobs:
   build-test:
@@ -33,8 +33,9 @@ jobs:
 
       - name: install the deb package
         run: |
+          sudo apt update
+          sudo apt upgrade
           sudo apt install ./${{ env.DPKG_DEP_NAME }}.deb
-          sudo apt-get upgrade
           dpkg -l
 
       - name: run a package command
