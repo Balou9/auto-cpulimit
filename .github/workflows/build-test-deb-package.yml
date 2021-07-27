@@ -23,7 +23,6 @@ jobs:
       - name: build the deb package
         run: |
           ls -R
-#          dpkg-deb --build --root-owner-group ${{ env.DPKG_DEP_NAME }}
           dpkg-buildpackage -uc -us
 
       - name: install the deb package
