@@ -20,15 +20,8 @@ jobs:
         run: |
           echo "DPKG_DEP_NAME=${{ env.PACKAGE_NAME }}_${{ env.VERSION }}-${{ env.REVISION }}_${{ env.ARCHITECTURE }}" >> $GITHUB_ENV
 
-      - name: create the folder structure
-        run: |
-          mkdir -p ${{ env.DPKG_DEP_NAME }}/usr/local/bin
-          cp acl.sh ${{ env.DPKG_DEP_NAME }}/usr/local/bin
-          cp -r DEBIAN ${{ env.DPKG_DEP_NAME }}
-
       - name: build the deb package
         run: |
-          cd ${{ env.PACKAGE_NAME }}
           ls -R
           dpkg-deb --build --root-owner-group ${{ env.DPKG_DEP_NAME }}
 
