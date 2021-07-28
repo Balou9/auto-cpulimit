@@ -18,18 +18,18 @@ jobs:
       - name: configure the environment
         id: configure_environment
         run: |
-          echo "DPKG_DEP_NAME=${{ env.PACKAGE_NAME }}_${{ env.VERSION }}-${{ env.REVISION }}_${{ env.ARCHITECTURE }}" >> $GITHUB_ENV
+          echo "DPKG_DEB_NAME=${{ env.PACKAGE_NAME }}_${{ env.VERSION }}.${{ env.REVISION }}_${{ env.ARCHITECTURE }}" >> $GITHUB_ENV
 
       - name: build the deb package
         run: |
           ls -R
-          dpkg-buildpackage -uc -us
+          dpkg-buildpackage -d -uc -us
 
       - name: install the deb package
         run: |
           sudo apt update
           sudo apt upgrade
-          sudo apt install ./${{ env.DPKG_DEP_NAME }}.deb
+          sudo apt install ./${{ env.DPKG_DEB_NAME }}.deb
           dpkg -l
 
       - name: run a package command
