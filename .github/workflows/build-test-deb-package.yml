@@ -5,7 +5,6 @@ on: push
 env:
   PACKAGE_NAME: auto-cpulimit
   VERSION: "0.1"
-  REVISION: "1"
   ARCHITECTURE: all
 
 jobs:
@@ -18,7 +17,7 @@ jobs:
       - name: configure the environment
         id: configure_environment
         run: |
-          echo "DPKG_DEB_NAME=${{ env.PACKAGE_NAME }}_${{ env.VERSION }}.${{ env.REVISION }}_${{ env.ARCHITECTURE }}" >> $GITHUB_ENV
+          echo "DPKG_DEB_NAME=${{ env.PACKAGE_NAME }}_${{ env.VERSION }}_${{ env.ARCHITECTURE }}" >> $GITHUB_ENV
 
       - name: build the deb package
         run: |
