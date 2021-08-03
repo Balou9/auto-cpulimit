@@ -3,7 +3,7 @@ name: compile-sh-to-executable
 on: push
 
 env:
-  PACKAGE_NAME: auto-cpulimit
+  NAME_OF_EXECUTABLE: auto-cpulimit
   VERSION: "0.1"
   ARCHITECTURE: all
 
@@ -22,5 +22,9 @@ jobs:
 
       - name: compile shell script to executable
         run: |
-          shc -f ./acl.sh
-          ls
+          shc -v -f ./acl.sh
+          mv acl.sh.x {{ env.NAME_OF_EXECUTABLE }}
+
+      - name: test executable
+        run: |
+          ./NAME_OF_EXECUTABLE --help

@@ -3,7 +3,3 @@
 # auto-cpulimit
 
 limit cpu usage of multiple processes
-
-```
-apt install auto-cpulimit
-```
