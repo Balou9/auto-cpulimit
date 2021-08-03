@@ -23,6 +23,7 @@ jobs:
       - name: compile shell script to executable
         run: |
           shc -v -f ./acl.sh
+          ls 
           mv acl.sh.x {{ env.NAME_OF_EXECUTABLE }}
 
       - name: test executable
