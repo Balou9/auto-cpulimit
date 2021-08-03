@@ -251,7 +251,7 @@ limit_pids() {
                 ;;
         esac
     done <<EOF
-$pids
+    $pids
 EOF
 }
 
@@ -262,7 +262,7 @@ limit_by_executable() {
         do
             limit_pids "$(pgrep -x "$exe")" 0 "$exe"
         done <<EOF
-$exes
+        $exes
 EOF
     fi
 
@@ -272,7 +272,7 @@ EOF
         do
             limit_pids "$(pgrep -xf "$path")" 0 "$path"
         done <<EOF
-$paths
+        $paths
 EOF
     fi
 }
@@ -297,7 +297,7 @@ limit_by_subprocess() {
             fi
         fi
     done <<EOF
-$watched_pids
+    $watched_pids
 EOF
 }
 
