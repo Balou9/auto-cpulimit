@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/bin/bash
+set -e
+
 kill_child_jobs() {
     pkill -P $$
 }
