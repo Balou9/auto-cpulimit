@@ -1,9 +1,9 @@
-name: compile-sh-to-executable
+PROGRAMname: compile-sh-to-executable
 
 on: push
 
 env:
-  NAME_OF_EXECUTABLE: auto-cpulimit
+  NAME_OF_PROGRAM: auto-cpulimit
   VERSION: "0.1"
   ARCHITECTURE: all
 
@@ -23,9 +23,9 @@ jobs:
       - name: compile shell script to executable
         run: |
           shc -v -f ./acl.sh
+          mv acl.sh.x ${{ env.NAME_OF_PROGRAM }}
           ls
-          mv acl.sh.x ${{ env.NAME_OF_EXECUTABLE }}
 
       - name: test executable
         run: |
-          ./NAME_OF_EXECUTABLE --help
+          ./${{ env.NAME_OF_PROGRAM }} --help
