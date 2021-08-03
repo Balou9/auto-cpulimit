@@ -1,8 +1,0 @@
-[Unit]
-Description=auto-cpulimit package
-
-[Service]
-ExecStart=/usr/bin/acl.sh
-
-[Install]
-WantedBy=multi-user.target

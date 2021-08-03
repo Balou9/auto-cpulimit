@@ -1,4 +1,4 @@
-[![build-test-deb-package](https://github.com/Balou9/auto-cpulimit/workflows/build-test-deb-package/badge.svg)](https://github.com/Balou9/auto-cpulimit/actions)
+[![build-test-deb-package](https://github.com/Balou9/auto-cpulimit/workflows/compile-sh-to-executable/badge.svg)](https://github.com/Balou9/auto-cpulimit/actions)
 
 # auto-cpulimit
 
