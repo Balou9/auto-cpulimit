@@ -1,4 +1,4 @@
-PROGRAMname: compile-sh-to-executable
+name: compile-sh-to-executable
 
 on: push
 
