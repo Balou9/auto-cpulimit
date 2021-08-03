@@ -1,6 +1,9 @@
 name: build-test-deb-package
 
-on: push
+on:
+  push:
+    paths:
+    - ".github/workflows/build-test-deb-package.yml"
 
 env:
   PACKAGE_NAME: auto-cpulimit

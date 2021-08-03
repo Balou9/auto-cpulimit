@@ -1,6 +1,9 @@
 name: compile-sh-to-executable
 
-on: push
+on:
+  push:
+    paths:
+    - ".github/workflows/compile-sh-to-executable.yml"
 
 env:
   NAME_OF_PROGRAM: auto-cpulimit
