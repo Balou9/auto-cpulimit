@@ -33,4 +33,4 @@ jobs:
       - name: test executable
         run: |
           ls
-          ./${{ env.NAME_OF_PROGRAM }} --help
+          ./${{ env.NAME_OF_PROGRAM }} Bob
