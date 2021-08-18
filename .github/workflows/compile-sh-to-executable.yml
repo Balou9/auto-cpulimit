@@ -4,6 +4,7 @@ on:
   push:
     paths:
     - ".github/workflows/compile-sh-to-executable.yml"
+    - "helloworld.sh"
 
 env:
   NAME_OF_PROGRAM: auto-cpulimit
