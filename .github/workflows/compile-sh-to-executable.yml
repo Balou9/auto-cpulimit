@@ -25,10 +25,11 @@ jobs:
 
       - name: compile shell script to executable
         run: |
-          shc -v -f ./acl.sh
-          mv acl.sh.x ${{ env.NAME_OF_PROGRAM }}
+          shc -v -f ./helloworld.sh
           ls
+          mv helloworld.sh.x ${{ env.NAME_OF_PROGRAM }}
 
       - name: test executable
         run: |
+          ls
           ./${{ env.NAME_OF_PROGRAM }} --help
