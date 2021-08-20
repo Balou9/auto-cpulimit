@@ -226,7 +226,7 @@ limit_pid () {
         echo "cpulimit --pid=$1 $cpulimit_args"
     fi
 
-    cpulimit --pid="$1" $cpulimit_args &
+    cpulimit --pid="$1" "$cpulimit_args" &
     cpulimit_pid=$!
     new_watched="$1:$2:$cpulimit_pid:$3"
     if [ -z "$watched_pids" ]
