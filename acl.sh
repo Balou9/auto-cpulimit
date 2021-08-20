@@ -1,10 +1,10 @@
 #!/bin/bash
 set -e
 
-kill_child_jobs() {
+kill_child_jobs () {
     pkill -P $$
 }
-cleanup() {
+cleanup () {
     kill_child_jobs
 }
 
@@ -207,7 +207,7 @@ then
 fi
 
 watched_pids=""
-limit_pid() {
+limit_pid () {
     if echo "$watched_pids" | grep --silent -F "$1"
     then
         return
@@ -238,7 +238,7 @@ $new_watched"
     fi
 }
 
-limit_pids() {
+limit_pids () {
     pids="$1"
     depth="$2"
     while read -r pid
@@ -255,7 +255,7 @@ limit_pids() {
 EOF
 }
 
-limit_by_executable() {
+limit_by_executable () {
     if [ -n "$exes" ]
     then
         while read -r exe
@@ -277,7 +277,7 @@ EOF
     fi
 }
 
-limit_by_subprocess() {
+limit_by_subprocess () {
     if [ -z "$watched_pids" ] || [ "$max_depth" -eq 0 ]
     then
         return
@@ -313,7 +313,8 @@ clean_dead_cpulimit() {
         then
             echo "$watched"
         fi
-    done)"
+    done
+    )"
     watched_pids="$tmp"
 }
 
