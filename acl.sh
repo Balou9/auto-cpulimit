@@ -301,7 +301,7 @@ limit_by_subprocess () {
 EOF
 }
 
-clean_dead_cpulimit() {
+clean_dead_cpulimit () {
     if [ -z "$watched_pids" ]
     then
         return
