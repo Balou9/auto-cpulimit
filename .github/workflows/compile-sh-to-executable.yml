@@ -5,6 +5,8 @@ on:
     paths:
     - ".github/workflows/compile-sh-to-executable.yml"
     - "helloworld.sh"
+    - "acl.sh"
+
 
 env:
   NAME_OF_PROGRAM: auto-cpulimit
@@ -27,10 +29,13 @@ jobs:
       - name: compile shell script to executable
         run: |
           shc -v -f ./helloworld.sh
+          shc -v -f ./acl.sh
           ls
-          mv helloworld.sh.x ${{ env.NAME_OF_PROGRAM }}
+          mv acl.sh.x hellolo
+          mv acl.sh.x ${{ env.NAME_OF_PROGRAM }}
 
       - name: test executable
         run: |
           ls
-          ./${{ env.NAME_OF_PROGRAM }} Bob
+          ./hellolo Bob
+          ./${{ env.NAME_OF_PROGRAM }} --help
