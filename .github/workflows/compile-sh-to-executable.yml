@@ -40,5 +40,4 @@ jobs:
 
       - name: test executable
         run: |
-          ls
-          ./helloworld Bob && ./${{ env.NAME_OF_PROGRAM }} --help
+          ./${{ env.NAME_OF_PROGRAM }} --help
