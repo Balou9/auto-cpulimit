@@ -33,10 +33,8 @@ jobs:
 
       - name: compile shell script to executable
         run: |
-          shc -v -f ./helloworld.sh
-          shc -v -f ./acl.sh
-          mv helloworld.sh.x helloworld
-          mv acl.sh.x auto-cpulimit
+          shc -v -f ./helloworld.sh && mv helloworld.sh.x helloworld
+          shc -v -f ./acl.sh && mv acl.sh.x auto-cpulimit
 
       - name: test executable
         run: |
