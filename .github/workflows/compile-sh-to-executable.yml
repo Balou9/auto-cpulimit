@@ -27,9 +27,9 @@ jobs:
           sudo apt-get install shc
           sudo apt install dos2unix
 
-      - name: convert shell script to unix format
-        run: |
-          dos2unix helloworld.sh acl.sh
+      # - name: convert shell script to unix format
+      #   run: |
+      #     dos2unix helloworld.sh acl.sh
 
       - name: compile shell script to executable
         run: |
