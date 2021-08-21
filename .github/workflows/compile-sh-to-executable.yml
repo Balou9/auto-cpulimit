@@ -23,7 +23,7 @@ jobs:
       - name: install dependencies
         run: |
           sudo add-apt-repository ppa:neurobin/ppa
-          sudo apt-get update
+          sudo apt-get update && sudo apt-get upgrade
           sudo apt-get install shc
           sudo apt install dos2unix
 
