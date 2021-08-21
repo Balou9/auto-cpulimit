@@ -36,8 +36,8 @@ jobs:
           shc -v -f ./helloworld.sh
           shc -v -f ./acl.sh
           mv helloworld.sh.x helloworld
-          mv acl.sh.x ${{ env.NAME_OF_PROGRAM }}
+          mv acl.sh.x auto-cpulimit
 
       - name: test executable
         run: |
-          ./${{ env.NAME_OF_PROGRAM }} --help
+          ./auto-cpulimit --help
