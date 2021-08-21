@@ -49,7 +49,7 @@ do
 
     case "$opt" in
         -h|--help)
-            helptxt=$(cat <<EOF
+        helptxt=$(cat <<EOF
 Usage: $0 [TARGET] [OPTIONS...] [-- PROGRAM]
    TARGET may be one or more of these (either TARGET or PROGRAM is required):
       -p, --pid=N        pid of a process
@@ -89,7 +89,7 @@ Usage: $0 [TARGET] [OPTIONS...] [-- PROGRAM]
                          Signal should be specificed as a number or
                          SIGTERM, SIGCONT, SIGSTOP, etc. SIGCONT is the default.
       -v, --verbose      show control statistics
-EOF)
+      EOF)
             cat $helptxt
             exit 0
             ;;
