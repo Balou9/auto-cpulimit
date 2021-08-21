@@ -90,7 +90,7 @@ Usage: $0 [TARGET] [OPTIONS...] [-- PROGRAM]
                          SIGTERM, SIGCONT, SIGSTOP, etc. SIGCONT is the default.
       -v, --verbose      show control statistics
 EOF
-            exit
+            exit 0
             ;;
         --max-depth)
             case $arg in
