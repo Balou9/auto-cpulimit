@@ -93,7 +93,7 @@ EOF
             exit 0
             ;;
         --max-depth)
-            case $arg in
+            case "$arg" in
                 ''|*[!0-9]*)
                     echo "Invalid max depth: $arg, must be a non-negative integer."
                     exit 5
@@ -105,13 +105,13 @@ EOF
             esac
             ;;
         --max-processes)
-            case $arg in
+            case "$arg" in
                 ''|*[!0-9]*)
                     echo "Invalid max processes: $arg, must be a positive integer."
                     exit 5
                     ;;
                 *)
-                    max_processes=$arg
+                    max_processes="$arg"
                     shift $argshift
                     ;;
             esac
