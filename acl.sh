@@ -50,13 +50,13 @@ do
     case "$opt" in
         -h|--help)
             cat <<EOF
-Usage: $0 [TARGET] [OPTIONS...] [-- PROGRAM]
+Usage: auto-cpulimit [TARGET] [OPTIONS...] [-- PROGRAM]
    TARGET may be one or more of these (either TARGET or PROGRAM is required):
       -p, --pid=N        pid of a process
       -e, --exe=FILE     name of a executable program file
       -P, --path=PATH    absolute path name of a
                          executable program file
-   OPTIONS for $0
+   OPTIONS for auto-cpulimit
           --max-depth=N  If 0, only target explicitly referenced processes.
                          Otherwise, target subprocesses up to N layers deep.
           --max-processes=N
@@ -71,7 +71,7 @@ Usage: $0 [TARGET] [OPTIONS...] [-- PROGRAM]
                          During setup, delay INTERVAL (argument to sleep(1))
                          between searches for more subprocesses to avoid
                          spending 100% CPU searching for targets.
-          --             This is the final $0 option. All following
+          --             This is the final auto-cpulimit option. All following
                          options are for another program we will launch.
       -h, --help         display this help and exit
    OPTIONS forwarded to CPUlimit
@@ -80,7 +80,7 @@ Usage: $0 [TARGET] [OPTIONS...] [-- PROGRAM]
                          Usually 1 - 800, but can be higher
                          on multi-core CPUs (mandatory)
       -q, --quiet        run in quiet mode (only print errors).
-                         (Also suppresses messages from $0.)
+                         (Also suppresses messages from auto-cpulimit.)
       -k, --kill         kill processes going over their limit
                          instead of just throttling them.
       -r, --restore      Restore processes after they have
