@@ -38,4 +38,4 @@ jobs:
 
       - name: test executable
         run: |
-          ./auto-cpulimit --help -x
+          bash -x ./auto-cpulimit --help
