@@ -7,8 +7,6 @@ on:
     - "helloworld.sh"
     - "acl.sh"
 
-shell: /usr/bin/bash {0}
-
 env:
   NAME_OF_PROGRAM: auto-cpulimit
   VERSION: "0.1"
@@ -33,6 +31,7 @@ jobs:
       #     dos2unix helloworld.sh acl.sh
 
       - name: test shell script
+        shell: /usr/bin/bash {0}
         run: |
           bash -x ./acl.sh --help
 
