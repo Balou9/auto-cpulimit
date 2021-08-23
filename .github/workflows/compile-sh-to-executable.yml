@@ -14,7 +14,7 @@ env:
   ARCHITECTURE: all
 
 jobs:
-  build:
+  compile-test:
     runs-on: ubuntu-latest
     steps:
       - name: clone the repo
@@ -31,11 +31,15 @@ jobs:
       #   run: |
       #     dos2unix helloworld.sh acl.sh
 
+      - name: test shell script
+        run: |
+          bash -x ./acl.sh --help
+
       - name: compile shell script to executable
         run: |
           shc -v -f ./helloworld.sh && mv helloworld.sh.x helloworld
           shc -v -f ./acl.sh && mv acl.sh.x auto-cpulimit
 
-      - name: test executable
+      - name: test binary
         run: |
-          bash -x ./auto-cpulimit --help
+          ./auto-cpulimit --help
