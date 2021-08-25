@@ -93,6 +93,7 @@ EOF
             exit 0
             ;;
     esac
+    ;;
         --max-depth)
             case $arg in
                 ''|*[!0-9]*)
