@@ -91,7 +91,6 @@ Usage: auto-cpulimit [TARGET] [OPTIONS...] [-- PROGRAM]
       -v, --verbose      show control statistics
 EOF
             exit 0
-            esac
             ;;
         --max-depth)
             case $arg in
