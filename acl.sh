@@ -92,6 +92,7 @@ Usage: auto-cpulimit [TARGET] [OPTIONS...] [-- PROGRAM]
 EOF
             exit 0
             ;;
+    esac
         --max-depth)
             case $arg in
                 ''|*[!0-9]*)
