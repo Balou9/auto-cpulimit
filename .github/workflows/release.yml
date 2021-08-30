@@ -3,7 +3,7 @@ name: compile-sh-to-executable
 on:
   push:
     paths:
-    - ".github/workflows/compile-sh-to-executable.yml"
+    - ".github/workflows/release.yml"
     - "helloworld.sh"
     - "acl.sh"
 
