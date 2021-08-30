@@ -1,4 +1,4 @@
-name: compile-sh-to-executable
+name: release
 
 on:
   push:
