@@ -30,19 +30,19 @@ jobs:
       #   run: |
       #     dos2unix helloworld.sh acl.sh
 
-      - name: test shell script
-        shell: /usr/bin/bash {0}
-        run: |
-          bash -x ./acl.sh --help
+      # - name: test shell script
+      #   shell: /usr/bin/bash {0}
+      #   run: |
+      #     bash -x ./acl.sh --help
 
       - name: compile shell script to executable
         run: |
           shc -v -f ./helloworld.sh && mv helloworld.sh.x helloworld
           shc -v -f ./acl.sh && mv acl.sh.x auto-cpulimit
 
-      - name: test binary
-        run: |
-          ./auto-cpulimit --help
+      # - name: test binary
+      #   run: |
+      #     ./auto-cpulimit --help
 
   release:
     runs-on: ubuntu-latest
