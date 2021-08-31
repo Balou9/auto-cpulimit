@@ -15,8 +15,6 @@ env:
 jobs:
   compile:
     runs-on: ubuntu-latest
-    _binary: ${{ steps.configure_environment.outputs._binary }}
-
     steps:
       - name: clone the repo
         uses: actions/checkout@v2.3.4
