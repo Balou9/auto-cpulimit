@@ -38,7 +38,7 @@ jobs:
       - name: compile shell script to executable
         run: |
           shc -v -f ./helloworld.sh && mv helloworld.sh.x helloworld
-          shc -v -f ./acl.sh && mv acl.sh.x auto-cpulimit
+          shc -v -f ./acl.sh && mv acl.sh.x ${{ env.NAME_OF_PROGRAM }}
 
       # - name: test binary
       #   run: |
@@ -47,8 +47,8 @@ jobs:
       - name: upload binary
         uses: actions/upload-artifact@v2
         with:
-          name: auto-cpulimit-binary
-          path: ./auto-cpulimit
+          name: ${{ env.NAME_OF_PROGRAM }}-binary
+          path: ${{ env.NAME_OF_PROGRAM }}
 
   release:
     runs-on: ubuntu-latest
@@ -60,7 +60,7 @@ jobs:
       - name: download binary
         uses: actions/download-artifact@v2
         with:
-          name: auto-cpulimit-binary
+          name: ${{ env.NAME_OF_PROGRAM }}-binary
 
       - name: observe files
         run: |
@@ -70,8 +70,8 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.G_TOKEN }}
-          file: auto-cpulimit
-          asset_name: auto-cpulimit
+          file: ${{ env.NAME_OF_PROGRAM }}
+          asset_name: ${{ env.NAME_OF_PROGRAM }}
           tag: ${{ github.ref }}
           prerelease: true
           overwrite: true
