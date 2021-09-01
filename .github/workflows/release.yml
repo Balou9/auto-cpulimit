@@ -26,23 +26,10 @@ jobs:
           sudo apt-get install shc
           sudo apt install dos2unix
 
-      # - name: convert shell script to unix format
-      #   run: |
-      #     dos2unix helloworld.sh acl.sh
-
-      # - name: test shell script
-      #   shell: /usr/bin/bash {0}
-      #   run: |
-      #     bash -x ./acl.sh --help
-
-      - name: compile shell script to executable
+      - name: compile shell script to binary
         run: |
           shc -v -f ./helloworld.sh && mv helloworld.sh.x helloworld
           shc -v -f ./acl.sh && mv acl.sh.x ${{ env.NAME_OF_PROGRAM }}
-
-      # - name: test binary
-      #   run: |
-      #     ./auto-cpulimit --help
 
       - name: upload binary
         uses: actions/upload-artifact@v2
@@ -61,10 +48,6 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: ${{ env.NAME_OF_PROGRAM }}-binary
-
-      - name: observe files
-        run: |
-          ls
 
       - name: upload binary to github release
         uses: svenstaro/upload-release-action@v2
