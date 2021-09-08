@@ -6,6 +6,8 @@ on:
     - ".github/workflows/release.yml"
     - "helloworld.sh"
     - "acl.sh"
+    tags:
+      - 'v*'
 
 env:
   NAME_OF_PROGRAM: auto-cpulimit
@@ -26,15 +28,21 @@ jobs:
           sudo apt-get install shc
           sudo apt install dos2unix
 
+      - name: get the current version tag for auto-cpulimit-binary
+        run: |
+          pushed_tag=${GITHUB_REF/refs\/tags\//}
+          echo "[DEBUG] AUTO_CPULIMIT_BINARY_TAG=$pushed_tag"
+          echo "AUTO_CPULIMIT_BINARY_TAG=$pushed_tag" >> $GITHUB_ENV
+
       - name: compile shell script to binary
         run: |
           shc -v -f ./helloworld.sh && mv helloworld.sh.x helloworld
           shc -v -f ./acl.sh && mv acl.sh.x ${{ env.NAME_OF_PROGRAM }}
 
       - name: upload binary
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v2.2.4
         with:
-          name: ${{ env.NAME_OF_PROGRAM }}-binary
+          name: ${{ env.NAME_OF_PROGRAM }}-binary-${{ env.pushed_tag }}
           path: ${{ env.NAME_OF_PROGRAM }}
 
   release:
@@ -47,7 +55,7 @@ jobs:
       - name: download binary
         uses: actions/download-artifact@v2
         with:
-          name: ${{ env.NAME_OF_PROGRAM }}-binary
+          name: ${{ env.NAME_OF_PROGRAM }}-binary${{ env.pushed_tag }}
 
       - name: upload binary to github release
         uses: svenstaro/upload-release-action@v2
@@ -55,6 +63,6 @@ jobs:
           repo_token: ${{ secrets.G_TOKEN }}
           file: ${{ env.NAME_OF_PROGRAM }}
           asset_name: ${{ env.NAME_OF_PROGRAM }}
-          tag: ${{ github.ref }}
+          tag: ${{ env.pushed_tag }}
           prerelease: true
           overwrite: true
