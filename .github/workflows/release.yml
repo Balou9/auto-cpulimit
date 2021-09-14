@@ -2,6 +2,8 @@ name: release
 
 on:
   push:
+    paths:
+    - '.github/workflows/release.yml'
     tags:
       - 'v*'
 
@@ -38,7 +40,7 @@ jobs:
       - name: upload binary
         uses: actions/upload-artifact@v2.2.4
         with:
-          name: ${{ env.NAME_OF_PROGRAM }}-binary-${{ env.pushed_tag }}
+          name: ${{ env.NAME_OF_PROGRAM }}-binary-${{ env.AUTO_CPULIMIT_BINARY_TAG }}
           path: ${{ env.NAME_OF_PROGRAM }}
 
   release:
@@ -51,14 +53,14 @@ jobs:
       - name: download binary
         uses: actions/download-artifact@v2
         with:
-          name: ${{ env.NAME_OF_PROGRAM }}-binary-${{ env.pushed_tag }}
+          name: ${{ env.NAME_OF_PROGRAM }}-binary-${{ env.AUTO_CPULIMIT_BINARY_TAG }}
 
       - name: upload binary to github release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.G_TOKEN }}
           file: ${{ env.NAME_OF_PROGRAM }}
-          asset_name: ${{ env.NAME_OF_PROGRAM }}
-          tag: ${{ env.pushed_tag }}
+          asset_name: ${{ env.NAME_OF_PROGRAM }}-binary-${{ env.AUTO_CPULIMIT_BINARY_TAG }}
+          tag: ${{ env.${{ secrets.G_TOKEN }} }}
           prerelease: true
           overwrite: true
