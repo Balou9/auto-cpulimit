@@ -55,7 +55,7 @@ jobs:
       - name: download binary
         uses: actions/download-artifact@v2
         with:
-          name: ${{ env.NAME_OF_PROGRAM }}-binary${{ env.pushed_tag }}
+          name: ${{ env.NAME_OF_PROGRAM }}-binary-${{ env.pushed_tag }}
 
       - name: upload binary to github release
         uses: svenstaro/upload-release-action@v2
