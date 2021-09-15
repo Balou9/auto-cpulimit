@@ -32,7 +32,7 @@ jobs:
           pushed_tag=${GITHUB_REF/refs\/tags\//}
           echo "[DEBUG] _version_release_tag=$pushed_tag"
           echo "VERSION_RELEASE_TAG=$pushed_tag" >> $GITHUB_ENV
-          echo "_version_release_tag=$VERSION_RELEASE_TAG"
+          echo "_version_release_tag=$pushed_tag"
 
       - name: compile shell script to binary
         run: |
