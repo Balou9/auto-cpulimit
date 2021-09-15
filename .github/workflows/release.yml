@@ -13,7 +13,6 @@ env:
 jobs:
   release:
     runs-on: ubuntu-latest
-    outputs:
     steps:
       - name: clone the repo
         uses: actions/checkout@v2.3.4
