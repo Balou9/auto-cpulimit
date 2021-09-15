@@ -9,8 +9,6 @@ on:
 
 env:
   NAME_OF_PROGRAM: auto-cpulimit
-  VERSION: "0.1"
-  ARCHITECTURE: all
 
 jobs:
   compile:
@@ -63,4 +61,3 @@ jobs:
           asset_name: ${{ env.NAME_OF_PROGRAM }}-binary-${{ env.AUTO_CPULIMIT_BINARY_TAG }}
           tag: ${{ env.${{ secrets.G_TOKEN }} }}
           prerelease: true
-          overwrite: true
