@@ -13,6 +13,8 @@ env:
 jobs:
   compile:
     runs-on: ubuntu-latest
+    outputs:
+      _version_release_tag: ${{ steps.get_release_tag.outputs._version_release_tag }}
     steps:
       - name: clone the repo
         uses: actions/checkout@v2.3.4
@@ -24,11 +26,13 @@ jobs:
           sudo apt-get install shc
           sudo apt install dos2unix
 
-      - name: get the current version tag for auto-cpulimit-binary
+      - name: get the current version release tag
+        id: get_release_tag
         run: |
           pushed_tag=${GITHUB_REF/refs\/tags\//}
-          echo "[DEBUG] AUTO_CPULIMIT_BINARY_TAG=$pushed_tag"
-          echo "AUTO_CPULIMIT_BINARY_TAG=$pushed_tag" >> $GITHUB_ENV
+          echo "[DEBUG] _version_release_tag=$pushed_tag"
+          echo "VERSION_RELEASE_TAG=$pushed_tag"
+          echo "::set-output name=_version_release_tag::$VERSION_RELEASE_TAG"
 
       - name: compile shell script to binary
         run: |
@@ -38,7 +42,7 @@ jobs:
       - name: upload binary
         uses: actions/upload-artifact@v2.2.4
         with:
-          name: ${{ env.NAME_OF_PROGRAM }}-binary-${{ env.AUTO_CPULIMIT_BINARY_TAG }}
+          name: ${{ env.NAME_OF_PROGRAM }}-binary-${{ env.VERSION_RELEASE_TAG }}
           path: ${{ env.NAME_OF_PROGRAM }}
 
   release:
@@ -51,13 +55,13 @@ jobs:
       - name: download binary
         uses: actions/download-artifact@v2
         with:
-          name: ${{ env.NAME_OF_PROGRAM }}-binary-${{ env.AUTO_CPULIMIT_BINARY_TAG }}
+          name: ${{ env.NAME_OF_PROGRAM }}-binary-${{ needs.compile.outputs._version_release_tag }}
 
       - name: upload binary to github release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.G_TOKEN }}
           file: ${{ env.NAME_OF_PROGRAM }}
-          asset_name: ${{ env.NAME_OF_PROGRAM }}-binary-${{ env.AUTO_CPULIMIT_BINARY_TAG }}
-          tag: ${{ env.AUTO_CPULIMIT_BINARY_TAG }}
+          asset_name: ${{ env.NAME_OF_PROGRAM }}-binary-${{ needs.compile.outputs._version_release_tag }}
+          tag: ${{ needs.compile.outputs._version_release_tag }}
           prerelease: true
