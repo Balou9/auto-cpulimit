@@ -15,4 +15,4 @@ jobs:
 
       - name: auto-cpulimit sh
         run: |
-          ./acl.sh -h
+          ./acl.sh
