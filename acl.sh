@@ -198,7 +198,7 @@ done
 if [ -z "$limit" ]
 then
     echo "Must specify a CPU percentage to limit to (-l/--limit)."
-    exit 4
+    exit 0
 fi
 if [ -z "$pids" ] && [ -z "$exes" ] && [ -z "$paths" ] && [ "$#" -eq 0 ]
 then
