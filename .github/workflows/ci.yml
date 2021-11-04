@@ -5,6 +5,7 @@ on:
     paths:
     - ".github/workflows/ci.yml"
     - "acl.sh"
+    - "helloworld.sh"
 
 jobs:
   test-sh:
