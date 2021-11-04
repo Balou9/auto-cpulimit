@@ -13,6 +13,6 @@ jobs:
       - name: clone the repo
         uses: actions/checkout@v2.3.4
 
-      - name: auto-cpulimit sh
+      - name: test sh
         run: |
-          ./acl.sh
+          ./helloworld.sh Oluba
