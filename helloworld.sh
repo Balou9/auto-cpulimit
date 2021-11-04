@@ -2,4 +2,4 @@
 set -e
 
 echo "Hello world, this is $1"
-exit 0
+exit 1
