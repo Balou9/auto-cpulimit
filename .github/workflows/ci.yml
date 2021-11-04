@@ -15,5 +15,4 @@ jobs:
 
       - name: test sh
         run: |
-          ./helloworld.sh Oluba
-          ./acl.sh -h
+          ./helloworld.sh Oluba91
